@@ -19,11 +19,32 @@
 gcc xx.c -o xx -L /usr/include/mysql -l mysqlclient
 ```
 
+不行的话就设置一下环境变量http://james23dier.iteye.com/blog/763274
+
+好像不用引入下面这么多
+
+```
+-L/usr/lib/mysql  -I/usr/include/mysql -lmysqlclient
+```
+
+
+
 
 
 ## 2、缺少#include <glib.h>
 
 ```
 sudo apt-get install libglib2.0-dev
+sudo apt-get install glib2.0
 ```
+
+要保证/usr/include有头文件，没有就找地方复制过来
+
+
+
+
+
+
+
+
 
