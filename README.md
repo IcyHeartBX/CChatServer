@@ -1,5 +1,7 @@
 > C/C++实现聊天服务器
 
+**CChatServer_eclipse**:这个工程是用Eclipse+Makefile编译的工程
+
 
 
 # 附录
