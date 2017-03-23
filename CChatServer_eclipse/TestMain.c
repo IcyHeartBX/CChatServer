@@ -83,8 +83,25 @@ int main()
 //	test_cfg();
 //	test_mysql();
 //	test_regex();
-//		test_login();
-	test_server();
+//	test_login();
+//	test_server();
+
+
+	char content[1000] = {0,};
+	readfile("conf/my.conf", content, sizeof(content));
+	char* host = get_node(content, "(?<=host:)[^,\n}]*");
+	char* user = get_node(content, "(?<=user:)[^,\n}]*");
+	char* password = get_node(content, "(?<=password:)[^,\n}]*");
+	char* database = get_node(content, "(?<=database:)[^,\n}]*");
+
+	open_db_connection(host, user, password, database);
+
+	server_start();
+
+	close_server();
+
+	close_db_connection();
+
 	printf("hello....\n");
 	return 0;
 }
