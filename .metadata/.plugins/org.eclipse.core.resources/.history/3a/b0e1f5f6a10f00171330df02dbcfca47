@@ -14,12 +14,12 @@ OBJS =	TestMain.o \
 		update_userinfo.o	\
 		refresh_userlist.o
 
-LIBS = -lmysqlclient -lglib-2.0 -L/usr/local/lib -L/usr/lib/mysql 
+LIBS = -lmysqlclient
 
 TARGET =	TestMain
 
 $(TARGET):	$(OBJS)
-	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)  -I/usr/include/mysql
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS) -L/usr/local/lib -lglib-2.0 -L/usr/lib/mysql  -I/usr/include/mysql
 
 all:	$(TARGET)
 

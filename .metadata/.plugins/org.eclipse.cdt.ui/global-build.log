@@ -1,6 +1,54 @@
-14:46:48 **** Incremental Build of configuration Default for project CChatServer_eclipse ****
+16:23:58 **** Build of configuration Default for project CChatServer_eclipse ****
 make all 
-make: Nothing to be done for 'all'.
-14:46:51 **** Incremental Build of configuration Default for project CChatServer_eclipse ****
-make all 
-make: Nothing to be done for 'all'.
+cc    -c -o TestMain.o TestMain.c
+TestMain.c: In function ‘test_mysql’:
+TestMain.c:18:2: warning: implicit declaration of function ‘print_data’ [-Wimplicit-function-declaration]
+  print_data();
+  ^
+TestMain.c: At top level:
+TestMain.c:22:6: warning: conflicting types for ‘print_data’
+ void print_data()
+      ^
+TestMain.c:18:2: note: previous implicit declaration of ‘print_data’ was here
+  print_data();
+  ^
+cc    -c -o file_helper.o file_helper.c
+cc    -c -o mysql_helper.o mysql_helper.c
+cc    -c -o regex_helper.o regex_helper.c
+cc    -c -o online_user.o online_user.c
+online_user.c: In function ‘hash_string’:
+online_user.c:84:14: warning: implicit declaration of function ‘toupper’ [-Wimplicit-function-declaration]
+         ch = toupper(*key++);
+              ^
+online_user.c: In function ‘print_hash_value’:
+online_user.c:147:10: warning: format ‘%d’ expects argument of type ‘int’, but argument 7 has type ‘char *’ [-Wformat=]
+   printf("%-12lx %-12lx %c %-12s %-12s %-12d\n",
+          ^
+online_user.c: In function ‘remove_online_user’:
+online_user.c:230:32: warning: passing argument 1 of ‘hash_table_remove’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  int index = hash_table_remove(sockfd, userlist_by_sockfd, MAXONLINECOUNT);
+                                ^
+online_user.c:28:5: note: expected ‘char *’ but argument is of type ‘const char * const’
+ int hash_table_remove(char *key, UserInfo *hash_table, int hash_table_count)
+     ^
+online_user.c: In function ‘user_is_online’:
+online_user.c:244:30: warning: passing argument 1 of ‘get_hash_index’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  return (-1 < get_hash_index(account, userlist_by_account, MAXONLINECOUNT));
+                              ^
+online_user.c:92:5: note: expected ‘char *’ but argument is of type ‘const char * const’
+ int get_hash_index(char *the_string, UserInfo *lptable, int ntableSize)
+     ^
+cc    -c -o login.o login.c
+cc    -c -o server.o server.c
+server.c: In function ‘handle_message’:
+server.c:64:16: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘size_t {aka long unsigned int}’ [-Wformat=]
+         printf("Message received! Sockfd: %d, Message: %s, Length: %d\n", sockfd, buf, strlen(buf));
+                ^
+cc    -c -o handler.o handler.c
+cc    -c -o user_register.o user_register.c
+cc    -c -o send_message.o send_message.c
+cc    -c -o forgot_password.o forgot_password.c
+cc    -c -o update_password.o update_password.c
+cc    -c -o update_userinfo.o update_userinfo.c
+cc    -c -o refresh_userlist.o refresh_userlist.c
+g++ -o TestMain TestMain.o file_helper.o mysql_helper.o regex_helper.o online_user.o login.o server.o handler.o user_register.o send_message.o forgot_password.o update_password.o update_userinfo.o refresh_userlist.o -lmysqlclient -lglib-2.0 -L/usr/local/lib -L/usr/lib/mysql   -I/usr/include/mysql
