@@ -1,0 +1,27 @@
+CXXFLAGS =	-O2 -g -Wall -fmessage-length=0  
+OBJS =	TestMain.o \
+					file_helper.o \
+					mysql_helper.o	\
+					regex_helper.o	\
+					online_user.o	\
+					login.o	\
+					server.o \
+					handler.o	\
+					user_register.o	\
+					send_message.o	\
+					forgot_password.o	\
+					update_password.o	\
+					update_userinfo.o	\
+					refresh_userlist.o
+
+LIBS = -lmysqlclient
+
+TARGET =	TestMain
+
+$(TARGET):	$(OBJS)
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS) -L/usr/local/lib -lglib-2.0 -L/usr/lib/mysql  -I/usr/include/mysql
+
+all:	$(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
