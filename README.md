@@ -45,6 +45,11 @@ sudo apt-get install glib2.0
 要保证/usr/include有头文件，没有就找地方复制过来
 
 
+单文件编译
+```
+gcc glibtest.c -o testglib `pkg-config --cflags --libs glib-2.0`
+```
+
 
 
 
